@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">TryScannerNDK</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Question</string>
+    <string name="second_fragment_label">Scanner</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="lorem_ipsum">
+            <b>1. I can learn and understand better by:</b>\n\n
+            \ta. Reading only text books and notes given by the teacher\n\n
+            \tb. Listening to teachers/friends\n\n
+            \tc. Watching topic related videos in YouTube / attending Exhibitions and visiting museums\n\n
+            \td. Doing hands-on experiments and activities using materials\n\n
+            \te. Teaching the learnings to my peers\n\n
+    </string>
+    <string name="scan_responses">Scan</string>
+    <string name="submit">Submit</string>
+    <string name="message">Note: \nOrientations give the raw angle of the marker (from 0 to 359). This angle will change depending on the orientation of the device.</string>
+</resources>

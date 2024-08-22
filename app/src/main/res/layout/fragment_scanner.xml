@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ScannerFragment">
+
+    <org.opencv.android.JavaCamera2View
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:id="@+id/main_camera"
+        android:padding="16dp"
+        />
+
+    <TextView
+        android:id="@+id/tvMarkerDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:padding="8dp"
+        android:scrollbars = "vertical"
+        android:fillViewport="true"
+        android:layout_weight="1.0"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        tools:text="TextView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/submit_button"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/submit"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="@string/submit" />
+
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@android:drawable/alert_light_frame"
+        tools:text="TextView"
+        android:text="@string/message" />
+
+</LinearLayout>
