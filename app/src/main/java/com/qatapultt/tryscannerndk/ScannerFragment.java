@@ -61,7 +61,8 @@ public class ScannerFragment extends Fragment {
                             sb.append("(").append(ids[i]).append(", ").append(orientations[i]).append(") \n");
                         }
                         requireActivity().runOnUiThread(() -> {
-                            binding.tvMarkerDetails.setText(sb.toString());
+                            if (binding != null && binding.tvMarkerDetails != null)
+                                binding.tvMarkerDetails.setText(sb.toString());
                         });
                     }
                 )

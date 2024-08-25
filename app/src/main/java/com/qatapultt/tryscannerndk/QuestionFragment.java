@@ -33,11 +33,16 @@ public class QuestionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonGotoScanner.setOnClickListener(v ->
+        binding.buttonGotoScanner.setOnClickListener(v -> {
+                mainViewModel.uniqueResponses.clear();
                 NavHostFragment.findNavController(QuestionFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment)
+                            .navigate(R.id.action_FirstFragment_to_SecondFragment);
+
+            }
         );
     }
+
+    private static final char[] CHOICES = {'A', 'B', 'C', 'D', 'E', 'F'};
 
     @Override
     public void onResume() {
@@ -45,7 +50,11 @@ public class QuestionFragment extends Fragment {
         StringBuilder sb = new StringBuilder();
         for (QCode code : mainViewModel.uniqueResponses.values()) {
             int orientation = Math.round(code.orientation/60f);
-            sb.append("(").append(code.id).append(", ").append(orientation > 5 ? 0: orientation).append(")\n ");
+            sb.append("(")
+                .append(code.id)
+                .append(", ")
+                .append(CHOICES[orientation > 5 ? 0: orientation])
+                .append(")\n ");
         }
         binding.textviewResponse.setText(sb.toString());
     }
