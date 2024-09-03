@@ -42,18 +42,23 @@ public class QuestionFragment extends Fragment {
         );
     }
 
-    private static final char[] CHOICES = {'A', 'B', 'C', 'D', 'E', 'F'};
+    private static final char[] CHOICES = {'N', 'A', 'B', 'C', 'D', 'E', 'F'};
+    private static final float TOLERANCE = 0.35f;
 
     @Override
     public void onResume() {
         super.onResume();
         StringBuilder sb = new StringBuilder();
         for (QCode code : mainViewModel.uniqueResponses.values()) {
-            int orientation = Math.round(code.orientation/60f);
+            float radian = (code.orientation + 45)/90f;
+            int orientation = Math.round(radian);
+            if (Math.abs(radian - orientation) > TOLERANCE) {
+                orientation = -1;
+            }
             sb.append("(")
                 .append(code.id)
                 .append(", ")
-                .append(CHOICES[orientation > 5 ? 0: orientation])
+                .append(CHOICES[(orientation > 3 ? 0: orientation) + 1])
                 .append(")\n ");
         }
         binding.textviewResponse.setText(sb.toString());
