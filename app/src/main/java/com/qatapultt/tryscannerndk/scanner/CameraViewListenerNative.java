@@ -27,7 +27,7 @@ public class CameraViewListenerNative implements CameraBridgeViewBase.CvCameraVi
         rgb = new Mat();
         localrgb = new Mat();
         qCodeScanner = new QCodeScanner();
-        qCodeScanner.activate("DKrnCKrnCaDoDKzoDuyR");
+        qCodeScanner.activate("DurnCurmDJVqDKvoDaqqDr==");
     }
 
     @Override
