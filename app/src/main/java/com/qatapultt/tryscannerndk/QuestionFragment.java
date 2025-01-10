@@ -37,9 +37,10 @@ public class QuestionFragment extends Fragment {
 
         binding.buttonGotoScanner.setOnClickListener(v -> {
                 mainViewModel.uniqueResponses.clear();
+                mainViewModel.startScanTime.setValue(0L);
+                mainViewModel.endScanTime.setValue(0L);
                 NavHostFragment.findNavController(QuestionFragment.this)
                             .navigate(R.id.action_FirstFragment_to_SecondFragment);
-
             }
         );
     }
@@ -65,12 +66,12 @@ public class QuestionFragment extends Fragment {
         }
         if (mainViewModel.startScanTime.getValue() != 0L) {
             sb.append("Scan start: ");
-            sb.append(new Date(mainViewModel.startScanTime.getValue() * 1000));
+            sb.append(new Date(mainViewModel.startScanTime.getValue()));
             sb.append("\nScan end: ");
-            sb.append(new Date(mainViewModel.endScanTime.getValue() * 1000));
+            sb.append(new Date(mainViewModel.endScanTime.getValue()));
             sb.append("\n Scan time: ");
             sb.append(mainViewModel.endScanTime.getValue() - mainViewModel.startScanTime.getValue());
-            sb.append(" seconds");
+            sb.append(" ms");
         }
 
         binding.textviewResponse.setText(sb.toString());

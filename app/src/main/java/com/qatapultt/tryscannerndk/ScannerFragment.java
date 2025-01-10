@@ -46,7 +46,7 @@ public class ScannerFragment extends Fragment {
                 new CameraViewListenerNative(
                     (ids, orientations) -> {
                         if (mainViewModel.startScanTime.getValue() == 0) {
-                            mainViewModel.startScanTime.postValue(System.currentTimeMillis() / 1000);
+                            mainViewModel.startScanTime.postValue(System.currentTimeMillis());
                         }
                         StringBuilder sb = new StringBuilder();
                         for (int i = 0; i < ids.length; i++) {
@@ -67,7 +67,7 @@ public class ScannerFragment extends Fragment {
                             if (binding != null && binding.tvMarkerDetails != null)
                                 binding.tvMarkerDetails.setText(sb.toString());
                         });
-                        mainViewModel.endScanTime.postValue(System.currentTimeMillis() / 1000);
+                        mainViewModel.endScanTime.postValue(System.currentTimeMillis());
                     }
                 )
             );
