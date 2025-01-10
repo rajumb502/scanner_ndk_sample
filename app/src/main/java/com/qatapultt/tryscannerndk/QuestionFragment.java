@@ -13,6 +13,8 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.qatapultt.tryscannerndk.databinding.FragmentQuestionBinding;
 import com.qatapultt.tryscannerndk.models.QCode;
 
+import java.util.Date;
+
 public class QuestionFragment extends Fragment {
 
     private FragmentQuestionBinding binding;
@@ -35,9 +37,10 @@ public class QuestionFragment extends Fragment {
 
         binding.buttonGotoScanner.setOnClickListener(v -> {
                 mainViewModel.uniqueResponses.clear();
+                mainViewModel.startScanTime.setValue(0L);
+                mainViewModel.endScanTime.setValue(0L);
                 NavHostFragment.findNavController(QuestionFragment.this)
                             .navigate(R.id.action_FirstFragment_to_SecondFragment);
-
             }
         );
     }
@@ -61,6 +64,16 @@ public class QuestionFragment extends Fragment {
                 .append(CHOICES[(orientation > 3 ? 0: orientation) + 1])
                 .append(")\n ");
         }
+        if (mainViewModel.startScanTime.getValue() != 0L) {
+            sb.append("Scan start: ");
+            sb.append(new Date(mainViewModel.startScanTime.getValue()));
+            sb.append("\nScan end: ");
+            sb.append(new Date(mainViewModel.endScanTime.getValue()));
+            sb.append("\n Scan time: ");
+            sb.append(mainViewModel.endScanTime.getValue() - mainViewModel.startScanTime.getValue());
+            sb.append(" ms");
+        }
+
         binding.textviewResponse.setText(sb.toString());
     }
 
